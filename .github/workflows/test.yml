@@ -15,11 +15,11 @@ jobs:
           echo "This is from test workflow!!"
           pwd
           whoami
-          ls -lrth
+          ls -alrth
           echo "---> One dir back"
-          ls -lrth ../
+          ls -alrth ../
           echo "---> Two dir back"
-          ls -lrth ../../
+          ls -alrth ../../
           echo "---> Three dir back"
-          ls -lrth ../../../
+          ls -alrth ../../../
         
