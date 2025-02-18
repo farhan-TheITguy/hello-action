@@ -15,6 +15,4 @@ jobs:
           echo "This is from test workflow!!"
           pwd
           whoami
-          ls -alrth
-          echo "---> One dir back"
           tree -a
