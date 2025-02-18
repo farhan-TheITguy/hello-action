@@ -8,5 +8,10 @@ jobs:
     steps:
       - name: test step
         id: test
-        run: echo "This is from test workflow!!"
         shell: bash
+        run: |
+          echo "This is from test workflow!!"
+          pwd
+          whoami
+          ls -lrth
+        
