@@ -2,6 +2,11 @@ name: bye
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      who-to-greet:
+        required: true
+        type: string
+        default: 'World'
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
