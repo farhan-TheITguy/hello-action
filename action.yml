@@ -58,3 +58,7 @@ runs:
           echo "--> Skipping"
         fi
       shell: bash
+  
+    - name: Run display.sh
+      run: display.sh
+      shell: bash
