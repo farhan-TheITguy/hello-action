@@ -26,6 +26,7 @@ runs:
           echo "Getting ${{ inputs.deployment-type }} id"
         else
           echo "Skipping performing get"
+        fi
       shell: bash
 
     - name: release the site
@@ -35,6 +36,7 @@ runs:
           echo "Releasing ${{ inputs.deployment-type }} id"
         else
           echo "Skipping performing release"
+        fi
       shell: bash
 
     - name: seed with firestoredb
@@ -44,4 +46,5 @@ runs:
           echo "Seeding ${{ inputs.deployment-type }}"
         else
           echo "Skipping performing seed"
+        fi
       shell: bash
