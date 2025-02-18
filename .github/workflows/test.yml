@@ -15,4 +15,10 @@ jobs:
           pwd
           whoami
           ls -lrth
+          echo "---> One dir back"
+          ls -lrth ../
+          echo "---> Two dir back"
+          ls -lrth ../../
+          echo "---> Three dir back"
+          ls -lrth ../../../
         
