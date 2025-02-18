@@ -22,7 +22,7 @@ runs:
     - name: get site
       id: get
       run: |
-        if [ ${{ imputs.operation }} == 'get' ]; then
+        if [ ${{ inputs.operation }} == 'get' ]; then
           echo "Getting ${{ inputs.deployment-type }} id"
         else
           echo "Skipping performing get"
@@ -31,7 +31,7 @@ runs:
     - name: release the site
       id: release
       run: |
-        if [ ${{ imputs.operation }} == 'release' ]; then
+        if [ ${{ inputs.operation }} == 'release' ]; then
           echo "Releasing ${{ inputs.deployment-type }} id"
         else
           echo "Skipping performing release"
@@ -40,7 +40,7 @@ runs:
     - name: seed with firestoredb
       id: seed
       run: |
-        if [ ${{ imputs.operation }} == 'seed' ]; then
+        if [ ${{ inputs.operation }} == 'seed' ]; then
           echo "Seeding ${{ inputs.deployment-type }}"
         else
           echo "Skipping performing seed"
