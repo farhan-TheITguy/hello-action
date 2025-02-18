@@ -17,9 +17,5 @@ jobs:
           whoami
           ls -alrth
           echo "---> One dir back"
-          ls -alrth ../
-          echo "---> Two dir back"
-          ls -alrth ../../
-          echo "---> Three dir back"
-          ls -alrth ../../../
-        
+          ls -alrth .github
+          tree
