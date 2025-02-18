@@ -1,0 +1,35 @@
+name: 'Hello World'
+description: 'Greet someone'
+inputs:
+  deployment-type:
+    required: true
+    default: 'site'
+  operation:
+    required: true
+    default: 'get'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - name: Do the Auth
+      id: auth
+      run: echo "Auth to GCP"
+      shell: bash
+
+    - name: get site
+      id: get
+      run: echo "get the site/supersite id"
+      shell: bash
+
+    - name: release the site
+      id: release
+      run: echo "release site/supersite"
+      shell: bash
+
+    - name: seed with firestoredb
+      id: seed
+      run: echo "seed with firestoredb for site/supersite"
+      shell: bash
