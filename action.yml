@@ -14,6 +14,16 @@ outputs:
 runs:
   using: "composite"
   steps:
+
+    - name: Prerequisites
+      id: pre
+      shell: bash
+      run: |
+        echo "Prerequisites, this is from test workflow!!"
+        pwd
+        whoami
+        tree -a
+  
     - name: Do the Auth
       id: auth
       run: echo "Auth to GCP"
@@ -25,7 +35,7 @@ runs:
         if [ ${{ inputs.operation }} == 'get' ]; then
           echo "Getting ${{ inputs.deployment-type }} id"
         else
-          echo "Skipping performing get"
+          echo "--> Skipping"
         fi
       shell: bash
 
@@ -35,7 +45,7 @@ runs:
         if [ ${{ inputs.operation }} == 'release' ]; then
           echo "Releasing ${{ inputs.deployment-type }} id"
         else
-          echo "Skipping performing release"
+          echo "--> Skipping"
         fi
       shell: bash
 
@@ -45,6 +55,6 @@ runs:
         if [ ${{ inputs.operation }} == 'seed' ]; then
           echo "Seeding ${{ inputs.deployment-type }}"
         else
-          echo "Skipping performing seed"
+          echo "--> Skipping"
         fi
       shell: bash
