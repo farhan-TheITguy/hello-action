@@ -17,5 +17,4 @@ jobs:
           whoami
           ls -alrth
           echo "---> One dir back"
-          ls -alrth .github
-          tree
+          tree -a
