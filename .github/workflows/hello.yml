@@ -9,11 +9,21 @@ on:
         default: 'World'
 jobs:
   hello_world_job:
-    runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: ./.github/actions/hello
-        with:
-          who-to-greet: 'Mona the Octocat'
+    - uses: actions/checkout@v4
+      with:
+        repository: farhan-TheITguy/hello-action
+        ref: main
+        path: hello-action
+    - name: Set Greeting
+      run: echo "Hello $INPUT_WHO_TO_GREET."
+      shell: bash
+      env:
+        INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
+    - name: Run some commands
+      run: |
+        pwd
+        whoami
+        ls -al
+      shell: bash
