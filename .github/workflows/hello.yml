@@ -26,5 +26,5 @@ jobs:
       run: |
         pwd
         whoami
-        ls -al
+        tree -a
       shell: bash
