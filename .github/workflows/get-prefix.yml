@@ -1,0 +1,45 @@
+name: Get Prefix
+on:
+  workflow_dispatch:
+    inputs:
+      deployment-type:
+        type: string
+        description: site or supersite
+        default: site
+  workflow_call:
+    inputs:
+      deployment-type:
+        type: string
+        description: site or supersite
+        default: site
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+
+jobs:
+  aquire-prefix-for-testing:
+    name: Aquire Prefix for Testing
+    runs-on: ubuntu-latest
+    outputs:
+      environment-prefix: ${{ steps.get-prefix.outputs.environment-prefix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: farhan-TheITguy/hello-action
+          ref: main
+          path: hello-action
+        #   token: ${{ secrets.GHA_PAT }}
+
+      - name: Get the Site or Supersite prefix
+        id: get-prefix
+        shell: bash
+        run: |
+          export GOOGLE_AUTH_ACCESS_TOKEN=$(gcloud auth print-access-token --impersonate-service-account=${{ inputs.access-token-subject }})
+          deployment_id=$(python get.py --deployment-type ${{ inputs.deployment-type }})
+          echo "environment-prefix=$deployment_id" >> $GITHUB_ENV
+          echo "environment-prefix=$deployment_id" >> $GITHUB_OUTPUT
+          echo "Aquired Site ID: $deployment_id" >> $GITHUB_STEP_SUMMARY
+          echo "Prefix acquired: $deployment_id"
+        working-directory: ./hello-action/scripts
