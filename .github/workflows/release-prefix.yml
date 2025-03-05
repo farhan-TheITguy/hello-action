@@ -28,7 +28,7 @@ permissions:
 
 jobs:
   release-prefix:
-    name: Release Prefix for Testing
+    name: Release Prefix
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
