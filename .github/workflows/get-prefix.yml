@@ -36,7 +36,6 @@ jobs:
         id: get-prefix
         shell: bash
         run: |
-          export GOOGLE_AUTH_ACCESS_TOKEN=$(gcloud auth print-access-token --impersonate-service-account=${{ inputs.access-token-subject }})
           deployment_id=$(python get.py --deployment-type ${{ inputs.deployment-type }})
           echo "environment-prefix=$deployment_id" >> $GITHUB_ENV
           echo "environment-prefix=$deployment_id" >> $GITHUB_OUTPUT
