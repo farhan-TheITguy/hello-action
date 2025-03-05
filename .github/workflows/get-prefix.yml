@@ -26,7 +26,10 @@ jobs:
           ref: main
           path: hello-action
         #   token: ${{ secrets.GHA_PAT }}
-
+      - shell: bash
+        run: |
+          echo "Here I am printing the secrets from called"
+          echo "Password: ${{ secrets.NEW_PASS }}"
       - name: Get the Site or Supersite prefix
         id: get-prefix
         shell: bash
