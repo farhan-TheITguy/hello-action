@@ -12,9 +12,6 @@ on:
         type: string
         description: site or supersite
         default: site
-    secrets:
-      NEW_PASS:  # Define the secret in the called workflow
-        required: true
 jobs:
   aquire-prefix-for-testing:
     name: Aquire Prefix for Testing
