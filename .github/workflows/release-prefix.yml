@@ -20,12 +20,6 @@ on:
         type: string
         description: prefix to release
         default: ab12c
-
-permissions:
-  contents: read
-  pull-requests: write
-  id-token: write
-
 jobs:
   release-prefix:
     name: Release Prefix
