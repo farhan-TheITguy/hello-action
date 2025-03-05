@@ -27,11 +27,9 @@ permissions:
   id-token: write
 
 jobs:
-  aquire-prefix-for-testing:
-    name: Aquire Prefix for Testing
+  release-prefix:
+    name: Release Prefix for Testing
     runs-on: ubuntu-latest
-    outputs:
-      environment-prefix: ${{ steps.get-prefix.outputs.environment-prefix }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,8 +38,8 @@ jobs:
           path: hello-action
         #   token: ${{ secrets.GHA_PAT }}
 
-      - name: Get the Site or Supersite prefix
-        id: get-prefix
+      - name: Release the Site or Supersite prefix
+        id: release-prefix
         shell: bash
         run: |
           python release.py --deployment-type ${{ inputs.deployment-type }} --prefix ${{ inputs.environment-prefix }} 
