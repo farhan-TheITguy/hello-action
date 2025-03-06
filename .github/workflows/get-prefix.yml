@@ -17,7 +17,7 @@ jobs:
     name: Aquire Prefix for Testing
     runs-on: ubuntu-latest
     outputs:
-      environment-prefix: ${{ steps.get-prefix.outputs.environment-prefix }}
+      environment-prefix: ${{ steps.get-prefix.outputs.environment_prefix }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,7 +35,7 @@ jobs:
         run: |
           deployment_id=$(python get.py --deployment-type ${{ inputs.deployment-type }})
           echo "environment-prefix=$deployment_id" >> $GITHUB_ENV
-          echo "environment-prefix=$deployment_id" >> $GITHUB_OUTPUT
+          echo "environment_prefix=$deployment_id" >> $GITHUB_OUTPUT
           echo "Aquired Site ID: $deployment_id" >> $GITHUB_STEP_SUMMARY
           echo "Prefix acquired: $deployment_id"
         working-directory: ./hello-action/scripts
